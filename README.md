@@ -102,4 +102,86 @@ Replace `YOUR-USERNAME` with your GitHub username.
 python -m pip install -r requirements.txt
 ```
 
-### Step
+### Step 3: Start MongoDB
+
+Ensure your local MongoDB server is running.
+
+The Python scripts use this local connection string:
+
+```text
+mongodb://localhost:27017
+```
+
+### Step 4: Import the Dataset
+
+1. Open MongoDB Compass.
+2. Connect to `mongodb://localhost:27017`.
+3. Create or select the database `ecommerce_analysis`.
+4. Import the corresponding dataset CSV files into the collections:
+   - `products`
+   - `order_items`
+   - `orders`
+   - `reviews`
+
+Ensure the collection names and field names match those expected by the Python scripts.
+
+### Step 5: Test the MongoDB Connection
+
+```bash
+python test_mongodb.py
+```
+
+### Step 6: Run the Analysis Script
+
+```bash
+python ecommerce_analysis.py
+```
+
+### Step 7: Launch the Dashboard
+
+```bash
+streamlit run dashboard.py
+```
+
+Open the local URL displayed in the terminal, usually:
+
+`http://localhost:8501`
+
+## Example Results
+
+The dashboard and aggregation pipelines can be used to explore metrics such as:
+
+- Total products: 32,951
+- Total order items: 112,650
+- Total orders: 99,441
+- Average review score: approximately 4.09 out of 5
+
+These figures reflect the dataset imported for this project. Results may vary if different data or filters are used.
+
+**Important:** Sales values calculated from order-item prices represent the sum of listed item prices, not profit or net revenue. They do not necessarily account for freight, discounts, refunds, or other costs.
+
+## MongoDB Concepts Demonstrated
+
+- Database and collection management
+- Document queries and filtering
+- Aggregation pipelines
+- `$match`, `$group`, `$sort`, and `$lookup`
+- Indexing to improve query performance
+- Joining related data across collections
+
+## Future Enhancements
+
+- Add interactive filters for product categories and order dates.
+- Include geographic sales analysis.
+- Analyze delivery performance and customer satisfaction.
+- Add more visualizations and downloadable reports.
+- Deploy the Streamlit dashboard online.
+
+## Author
+
+**Student Project**  
+E-commerce Product Analysis Using MongoDB, Python, and Streamlit
+
+## License
+
+This project is intended for educational and academic purposes. Refer to the original dataset's terms on Kaggle for dataset usage conditions.
